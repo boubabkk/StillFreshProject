@@ -1,0 +1,86 @@
+{% extends 'externalBase.html' %}
+{% block head %}
+    <title> Browse </title>
+    <link rel="stylesheet" href="../../static/css/login.css">
+{% endblock %}
+{% block content %}
+<div class="login-layout">
+    <form class="form-signin" method="post" action="" novalidate>
+       {{ form.hidden_tag() }}
+        <h2 class="h3 mb-3 font-weight-normal subtitle">{{ title }}</h2>
+        <br/>
+
+        {% if form.username.errors %}
+            {{ form.username(class='form-control is-invalid',placeholder="Username") }}
+            <div class="invalid-feedback">
+                {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.username(class='form-control',placeholder="Username") }}
+        {% endif %}
+
+
+        <br/>
+        {% if form.email.errors %}
+            {{ form.email(class='form-control is-invalid', placeholder="Email address") }}
+            <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.email(class='form-control', placeholder="Email address") }}
+        {% endif %}
+
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <br/>
+
+
+        {% if form.password.errors %}
+            {{ form.password(class="form-control is-invalid", placeholder="Password") }}
+            <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.password(class="form-control", placeholder="Password") }}
+        {% endif %}
+
+
+        {% if form.confirm_password.errors %}
+            {{ form.confirm_password(class="form-control is-invalid", placeholder="Confirm Password") }}
+            <div class="invalid-feedback">
+                {% for error in form.confirm_password.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.confirm_password(class="form-control", placeholder="Confirm Password") }}
+        {% endif %}
+
+
+        <br/>
+        {{ form.submit(class="btn btn-lg btn-info btn-block" ) }}
+
+        <div style="text-align: center" class="border-top pt-3">
+            <small style="font-size: medium" class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{{ url_for('login')}}"> Login </a>
+            </small>
+        </div>
+        <br/>
+
+        {% with messages = get_flashed_messages(with_categories=false) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </form>
+</div>
+{% endblock %}

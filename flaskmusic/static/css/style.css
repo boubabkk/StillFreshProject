@@ -1,0 +1,55 @@
+table, th, td {
+  border: 1px solid black;
+}
+td {
+    padding: 10%;
+    font-size: 20px;
+}
+p{
+    font-size: 25px;
+}
+.link{
+    text-decoration: none;
+    font-weight: 800;
+}
+.image {
+    color: white;
+    background-image: linear-gradient(#75CDE8, #FEB89B);
+/*    background-image: url("../img/bg.jpg");*/
+/*    background-size: cover;*/
+    height: 755px;
+    margin-top: -70px;
+}
+
+.heading {
+    text-align: center;
+    padding-top: 200px;
+    font-size: 80px;
+}
+
+.bg-img-btn{
+    text-align: center;
+    padding: 30px 60px;
+
+}
+
+.logo-style {
+    font-weight: 500;
+    font-size: x-large;
+}
+
+.bg-dark {
+    background-color: #6a9bca00!important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    font-size: x-large;
+}
+.center-all{
+    text-align: center;
+}
+
+.rightElement {
+    font-size: 15px;
+    margin-right: 15px;
+}

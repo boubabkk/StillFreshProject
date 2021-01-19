@@ -1,0 +1,54 @@
+{% extends 'externalBase.html' %}
+
+{% block head %}
+    <title> Forgot Password </title>
+    <link rel="stylesheet" href="../../static/css/browse.css">
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <div class="container">
+
+        <div class="login-layout">
+            <form class="form-signin" method="POST" action="" novalidate>
+            {{ form.hidden_tag() }}
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div style="text-align: center" class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+
+                <h2 class="h3 mb-3 font-weight-normal subtitle">{{ title }}</h2>
+
+
+                {% if form.email.errors %}
+                    {{ form.email(class='form-control is-invalid', placeholder="Email address") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class='form-control', placeholder="Email address") }}
+                {% endif %}
+
+                <br/>
+                {{ form.submit(class="btn btn-lg btn-info btn-block" ) }}
+
+                <div style="text-align: center" class="border-top pt-3">
+                    <small style="font-size: medium;" class="text-muted">
+                        Want to login? <a class="ml-2" href="{{ url_for('login')}}"> Login </a>
+                    </small>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

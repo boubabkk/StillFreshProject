@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Still Fresh</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+    <nav id="top" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand logo-style" href="/home">Still Fresh</a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse" id="navbarsExample07" style="">
+                <ul class="navbar-nav mr-auto">
+
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('premium') }}">Go Premium <span class="sr-only"></span></a>
+                    </li>
+
+                    {% if current_user.is_authenticated == False %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('sign_up') }}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="image">
+        <!--           <h1 class="heading">Music for everyone.</h1>-->
+        <h1 class="heading"> Music to my ears.</h1>
+        <p class="center-all">Millions of songs. No credit card needed.</p>
+        <form action="{{ url_for('liked_song') }}">
+            <p class="bg-img-btn">
+                <button class="btn btn-lg btn-info">Start listening now</button>
+            </p>
+        </form>
+
+    </div>
+
+    <br>
+
+    <br/>
+    <br/>
+    <br/>
+    <div class="container">
+        <div>
+            <h2>General Description</h2>
+
+            <p>This website is a music player. Better than <a href="https://www.spotify.com/ca-en/">spotify</a> more freedom.</p>
+
+            <p>There are millions of tracks and episodes on Still Fresh. Future assignment will include the spotify API So whether you’re behind the wheel, working out, partying or relaxing, the right music or podcast is always at your fingertips. Choose what you want to listen to, or let Still Fresh surprise you.</p>
+
+            <h3>Why are we better?</h3>
+
+            <ol>
+                <li>
+                    You will be able to re-arrange you music in the order you want them to appears which will lead to the creation of less playlist.
+                </li>
+                <li>filter your music based on multiple charteria
+                    <ul>
+                        <li>genre</li>
+                        <li>year</li>
+                        <li>most liked</li>
+                    </ul>
+                </li>
+                <li>
+                    When you search for an artist not only will you get the result of all the song he made but the search will also give you all the featuring the person did.
+                </li>
+            </ol>
+
+            <p>Soundtrack your life with Still Fresh. Subscribe or listen for free.</p>
+        </div>
+
+        <hr>
+        <br/>
+
+        <div>
+            <h2>Structure of Your Web Site</h2>
+            <p>
+                The structure of the site will be divided into multiple sections. The first one will be introduction of the site. the second will tell you bit about the structure. Next will be displaying the prices for our services. Then some notable partnership that might occur in the near future.
+            </p>
+        </div>
+
+        <br/><br/><br/>
+        <table style="align-content: center" class="table table-dark table-striped table-hover table-responsive-md">
+            <thead>
+                <tr style="text-align:center; font-size: 30px">
+                    <th>Free</th>
+                    <th>Premium</th>
+                    <th>Family Plan</th>
+                </tr>
+            </thead>
+            <tbody style="text-align:center">
+                {% for plan in list_plans %}
+                    <tr>
+                        {% for price in plan[:2] %}
+                            <td>{{ price }}</td>
+                        {%  endfor %}
+                        {% for col in plan[2:] %}
+                            <td>{{ col }}</td>
+                        {%  endfor %}
+                    </tr>
+                {%  endfor %}
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-lg btn-block btn-outline-info">Sign up for free</button>
+
+        <br/><br/><br/><br/>
+
+        <div>
+
+            <h1>Notable Future Partnership</h1>
+            <label>Spotify</label>
+            <a href="https://www.spotify.com/ca-en/"><img src="../static/img/spotify-logo.png" alt="Go to Spotify page"></a>
+
+            <label>Google</label>
+            <a href="https://www.google.ca/"><img src="../static/img/google.png" alt="Go to Google page"></a>
+
+            <label>Github</label>
+            <a href="https://github.com/"><img src="../static/img/github.png" alt="Go to Github page"></a>
+        </div>
+    </div>
+
+    <hr>
+    <br/>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <footer>
+        <a href="#top"><img class="float-right" width="100" height="100" src="../static/img/arrow.png" alt="Go back to the top of the page"></a>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

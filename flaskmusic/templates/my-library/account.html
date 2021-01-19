@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="../../static/css/profile.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="row">
+            <div class="col">
+
+                <div class="card">
+                    <img src="../../static/img/default.png" style="width:100%">
+                    <h1>{{ current_user.username }}</h1>
+                    <p class="title">{{ current_user.email }}</p>
+                        <p> ... </p>
+                    <div style="margin: 24px 0;">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col">
+
+                <div class="card">
+                    <form class="form-signin" method="POST" action="" novalidate>
+                       {{ form.hidden_tag() }}
+                        <h2 class="h3 mb-3 font-weight-normal subtitle">{{ title }}</h2>
+                        <br/>
+
+                        {% if form.username.errors %}
+                            {{ form.username(class='form-control is-invalid',placeholder="Username") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.username.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.username.label()}}
+                            {{ form.username(class='form-control',placeholder="Username") }}
+                        {% endif %}
+
+
+                        <br/>
+                        {% if form.email.errors %}
+                            {{ form.email(class='form-control is-invalid', placeholder="Email address") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email.label() }}
+                            {{ form.email(class='form-control', placeholder="Email address") }}
+                        {% endif %}
+
+                        <br/>
+
+                        <br/>
+                         {{ form.update(class="btn btn-lg btn-info btn-block" ) }}
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        </div>
+    <br/>
+    <br/>
+    <br/>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'externalBase.html' %}
+
+{% block head %}
+    <title> Premium </title>
+    <link rel="stylesheet" href="../../static/css/browse.css">
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <div class="container">
+        <br/><br/><br/>
+        <table style="align-content: center" class="table table-dark table-striped table-hover table-responsive-md">
+            <thead>
+                <tr style="text-align:center; font-size: 30px">
+                    <th>Free</th>
+                    <th>Premium</th>
+                    <th>Family Plan</th>
+                </tr>
+            </thead>
+            <tbody style="text-align:center">
+                {% for plan in list_plans %}
+                    <tr>
+                        {% for price in plan[:2] %}
+                            <td>{{ price }}</td>
+                        {%  endfor %}
+                        {% for col in plan[2:] %}
+                            <td>{{ col }}</td>
+                        {%  endfor %}
+                    </tr>
+                {%  endfor %}
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-lg btn-block btn-outline-info">Sign up for free</button>
+            <div class="card-deck mb-3 text-center">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Free</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>1 users</li>
+                            <li>Music with ads</li>
+                            <li>Email support</li>
+                            <li>Help center access</li>
+                        </ul>
+                        <button type="button" class="btn btn-lg btn-block btn-outline-info">Sign up for free</button>
+                    </div>
+                </div>
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Premium</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$9.99 <small class="text-muted">/ mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>1 users included</li>
+                            <li>Music no ads</li>
+                            <li>Priority email support</li>
+                            <li>Help center access</li>
+                        </ul>
+                        <button type="button" class="btn btn-lg btn-block btn-info">Get started</button>
+                    </div>
+                </div>
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Family Plan</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$29.99 <small class="text-muted">/ mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>10 users included</li>
+                            <li>Music no adds</li>
+                            <li>Phone and email support</li>
+                            <li>Help center access</li>
+                        </ul>
+                        <button type="button" class="btn btn-lg btn-block btn-info">Contact us</button>#}
+                    </div>
+                </div>
+            </div>
+        <div>
+        </div>
+    </div>
+{% endblock %}

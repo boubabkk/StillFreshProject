@@ -1,0 +1,60 @@
+{% extends 'externalBase.html' %}
+
+{% block head %}
+    <title> Create </title>
+    <link rel="stylesheet" href="../../static/css/artist.css">
+    <link rel="stylesheet" href="../../static/css/login.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="login-layout">
+            <form class="form-signin" method="POST" action="" novalidate>
+                {{ form.csrf_token }}
+
+                <h2 class="h3 mb-3 font-weight-normal subtitle">{{ title }}</h2>
+
+                {% if form.artist.errors %}
+                    {{ form.artist(id="artist", class='form-control is-invalid', placeholder="Artist name") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.artist.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.artist(id="artist", class='form-control', placeholder="Artist name") }}
+                {% endif %}
+
+                <br/>
+
+                {% if form.song.errors %}
+                    {{ form.song(id="song", class="form-control is-invalid", placeholder="Song title") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.song.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.song(id="song", class="form-control", placeholder="Song title") }}
+                {% endif %}
+
+                <br/>
+
+                {% if form.album.errors %}
+                    {{ form.album(id="album", class="form-control is-invalid", placeholder="Album name") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.song.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.album(id="album", class="form-control", placeholder="Album name") }}
+                {% endif %}
+
+                <br/>
+
+                {{ form.submit(class="btn btn-lg btn-info btn-block" ) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

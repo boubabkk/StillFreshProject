@@ -1,0 +1,35 @@
+
+.artistheader {
+    text-align: center;
+}
+
+.imgArtist1 {
+    background-image: url("../img/drake.jpg");
+    background-size: cover;
+    font-weight: 500;
+    font-size: 50px;
+}
+
+.imgArtist2 {
+    background-image: url("../img/tscott.jpg");
+    background-size: cover;
+    font-weight: 500;
+    font-size: 50px;
+}
+
+.imgArtist3 {
+    background-image: url("../img/riri.png");
+    background-size: cover;
+    font-weight: 500;
+    font-size: 50px;
+}
+
+
+.artistTitle {
+    color: gray;
+}
+
+.rightElement {
+    font-size: 15px;
+    margin-right: 15px;
+}

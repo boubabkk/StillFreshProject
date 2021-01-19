@@ -1,0 +1,21 @@
+
+.img-holder1 {
+    background-image: url("../img/m1.jpg");
+    background-size: cover;
+    font-weight: 500;
+    font-size: 50px;
+}
+
+.img-holder2 {
+    background-image: url("../img/m2.jpg");
+    background-size: cover;
+    font-weight: 500;
+    font-size: 50px;
+}
+
+.img-holder3 {
+    background-image: url("../img/m3.jpg");
+    background-size: cover;
+    font-weight: 500;
+    font-size: 50px;
+}

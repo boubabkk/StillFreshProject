@@ -1,0 +1,74 @@
+{% extends 'externalBase.html' %}
+
+{% block head %}
+    <title> Browse </title>
+    <link rel="stylesheet" href="../../static/css/login.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="login-layout">
+    <form class="form-signin" method="post" action="" novalidate>
+    {{ form.hidden_tag() }}
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div style="text-align: center" class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+
+        <h2 class="h3 mb-3 font-weight-normal subtitle">{{ title }}</h2>
+
+
+        {% if form.email.errors %}
+            {{ form.email(class='form-control is-invalid', placeholder="Email address") }}
+            <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.email(class='form-control', placeholder="Email address") }}
+        {% endif %}
+
+        {% if form.password.errors %}
+            {{ form.password(class="form-control is-invalid", placeholder="Password") }}
+            <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.password(class="form-control", placeholder="Password") }}
+        {% endif %}
+
+        <div class="checkbox mb-3">
+            {{ form.remember() }}
+            {{ form.remember.label(class="subtitle") }}
+
+            <small style="font-size: 15px" class="text-muted ml-2 float-right">
+                <a href="{{ url_for('reset_request') }}">Forgot Password</a>
+            </small>
+        </div>
+
+
+
+
+        <br/>
+        {{ form.submit(class="btn btn-lg btn-info btn-block" ) }}
+
+        <div style="text-align: center" class="border-top pt-3">
+            <small style="font-size: medium;" class="text-muted">
+                Don't Have An Account? <a class="ml-2" href="{{ url_for('sign_up')}}"> Register </a>
+            </small>
+        </div>
+    </form>
+
+</div>
+{% endblock %}
+
