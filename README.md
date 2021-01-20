@@ -1,4 +1,4 @@
-# StillFreshProject
+# StillFreshProject V1
 A python project discovering web development. This project will impliment: 
  * CRUD functionality (Create, Read, Update, Delete) of an artist
  * User Authentication: Login and Registration and User Account 
